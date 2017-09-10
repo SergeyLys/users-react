@@ -1,0 +1,33 @@
+.remove-image {
+  cursor: pointer;
+  color: blue;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.user-container {
+    margin-left: -15px;
+    margin-right: -15px;
+
+    > div {
+        display: flex;
+    }
+
+    .user-photo {
+        width: 30%;
+        padding-left: 15px;
+        padding-right: 15px;
+        text-align: center;
+
+        img {
+            margin-bottom: 15px;
+        }
+    }
+
+    .user-info {
+        width: 70%;
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+}

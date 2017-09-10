@@ -1,0 +1,24 @@
+.user-list {
+    margin: 0;
+    padding: 0;
+    border-collapse: collapse;
+    width: 100%;
+
+    tr {
+        transition: all .3s ease;
+
+        &:hover,
+        &.banned {
+            background-color: #ddd;
+        }
+    }
+
+    td {
+        width: 25%;
+        padding: 10px;
+
+        &:last-child {
+            text-align: right;
+        }
+    }
+}
