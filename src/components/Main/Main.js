@@ -19,7 +19,7 @@ const Main = ({currentUser, token, signOut}) => (
         <main className="site-main">
 
             {
-                currentUser === null || currentUser.login === '' || typeof token === 'undefined'
+                currentUser === null || currentUser.login === '' || currentUser === '' || typeof token === 'undefined'
                 ?
                 <div className="ui container">
                     <Switch>

@@ -6,8 +6,10 @@ import './UserList.css';
 export default class UserList extends Component {
 
     render() {
-        const userList = !this.props.users ? null : this.props.users.map((item, index)=> {
-            if (item.login !== 'admin')
+        const userList = !this.props.users
+            ? null
+            : this.props.users.map((item, index)=> {
+            if (item.login !== 'admin') {
                 return (
                     <tr className={item.banned ? 'banned' : ''} key={index}>
                         <td className="user-login">
@@ -24,6 +26,12 @@ export default class UserList extends Component {
                         </td>
                     </tr>
                 )
+            } else {
+                return (
+                    <p key={index}>No users in database</p>
+                )
+            }
+
         });
         
         return (

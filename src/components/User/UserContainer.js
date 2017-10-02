@@ -23,13 +23,13 @@ class UserContainer extends Component {
     data.append('file', file);
 
     this.props.uploadImage(data, checkToken('userstoken'));
-  }
+  };
 
   resetIcon = () => {
     const {name, age} = this.props.userInfo.user;
     this.props.changeProfileRequest({name, age, photo: {data: Buffer, contentType: String}}, checkToken('userstoken'));
     
-  }
+  };
 
   render() {
     const {login, name, age, photo} = this.props.userInfo.user;
