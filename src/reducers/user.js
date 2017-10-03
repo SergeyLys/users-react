@@ -26,7 +26,7 @@ export default (state = initialState, action) => {
             return {
                 ...state,
                 users: action.payload
-            }
+            };
         
         case 'USER_BANNED': {
             return {

@@ -16,6 +16,10 @@ function bufferToBase64(buf) {
 
 class UserContainer extends Component {
 
+  state = {
+    editParagraph: false
+  };
+
   onSubmit = (file) => {
 
     const data = new FormData();
@@ -29,6 +33,11 @@ class UserContainer extends Component {
     const {name, age} = this.props.userInfo.user;
     this.props.changeProfileRequest({name, age, photo: {data: Buffer, contentType: String}}, checkToken('userstoken'));
     
+  };
+
+  editHandler = (e) => {
+
+    console.log(e);
   };
 
   render() {
@@ -58,9 +67,15 @@ class UserContainer extends Component {
             </div>
 
             <div className="user-info">
-                {name && <p>Your name: {name}</p>}
-                {age && <p>Your age: {age}</p>}
+              <div className="profile-module">
+                {name && <p onClick={this.editHandler}>Your name: {name}</p>}
+                {age && <p onClick={this.editHandler}>Your age: {age}</p>}
                 <Link to='/edit'><Button primary>Edit your profile</Button></Link>
+              </div>
+
+              <div className="wall-module">
+                <p>No tasks, would you like to <Link to="/task-create">add</Link> task?</p>
+              </div>
             </div>
           </div>
         }
