@@ -7,6 +7,7 @@ export default class SigninForm extends React.Component {
     state = {
         login: '',
         password: '',
+        nickName: '',
         loading: false,
         errors: {}
     };
@@ -49,7 +50,7 @@ export default class SigninForm extends React.Component {
 
     render() {
 
-        const {login, password, errors} = this.state;
+        const {login, password, nickName, errors} = this.state;
 
         return(
             <Form onSubmit={this.onSubmit}>
@@ -76,6 +77,18 @@ export default class SigninForm extends React.Component {
                         onChange={this.onChange}
                     />
                     {errors.password && <span style={{color: "#ae5856"}}>{errors.password}</span>}
+                </Form.Field>
+                <Form.Field error={!!errors.nickName}>
+                    <label htmlFor="login">Nickname</label>
+                    <input
+                        type="text"
+                        name="nickName"
+                        id="nickName"
+                        placeholder="nickName"
+                        value={nickName}
+                        onChange={this.onChange}
+                    />
+                    {errors.nickName && <span style={{color: "#ae5856"}}>{errors.nickName}</span>}
                 </Form.Field>
                 <Button primary>Signup</Button>
             </Form>

@@ -25,6 +25,7 @@ class MainContainer extends React.Component {
                 signOut={this.onSignOut}
                 token={checkToken('userstoken')}
                 currentUser={this.props.currentUser}
+                history={this.props.history}
             />
         )
     }

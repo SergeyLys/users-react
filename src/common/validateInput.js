@@ -12,6 +12,10 @@ export default function validateInput(data) {
         errors.login = 'This is required field'
     }
 
+    if (typeof data.nickName !== 'undefined' && Validator.isEmpty(data.nickName)) {
+        errors.nickName = 'This is required field'
+    }
+
     return {
         errors,
         isValid: _isEmpty(errors)

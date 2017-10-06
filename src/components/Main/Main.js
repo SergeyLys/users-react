@@ -6,6 +6,8 @@ import SigninContainer from '../Forms/signin/SigninContainer';
 import EditFormContainer from '../Forms/editForm/EditFormContainer';
 import UserContainer from '../User/UserContainer';
 import UserListContainer from '../User/UserList/UserListContainer';
+import PersonContainer from '../User/PersonContainer';
+import SearchContainer from '../../pages/SearchContainer';
 import Header from '../Header/Header';
 import Error from '../Error';
 import { Switch, Route, Redirect } from 'react-router-dom';
@@ -13,7 +15,7 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 import React from 'react';
 
 
-const Main = ({currentUser, token, signOut}) => (
+const Main = ({currentUser, token, signOut, history}) => (
     <div className="site-wrapper">
 
         <main className="site-main">
@@ -23,7 +25,7 @@ const Main = ({currentUser, token, signOut}) => (
                 ?
                 <div className="ui container">
                     <Switch>
-                        <Route exact path='/' component={SigninContainer} />
+                        <Route exact path='/' component={SigninContainer}/>
                         <Route path='/signin' component={SigninContainer}/>
                         <Route path='/signup' component={SignupContainer}/>
                         <Route path='*' component={Error}/>
@@ -31,9 +33,9 @@ const Main = ({currentUser, token, signOut}) => (
                 </div>
                 :
                 <div className="ui container">
-                    <Header user={currentUser.login} signOut={signOut} />
+                    <Header user={currentUser.login} signOut={signOut} history={history} />
                     <Switch>
-                        <Route exact path='/' 
+                        <Route exact path='/'
                             render={ props =>
                                 <UserContainer {...props} />
                             }
@@ -46,6 +48,9 @@ const Main = ({currentUser, token, signOut}) => (
                             }
                         />
                         <Route exact path='/edit' component={EditFormContainer} />
+                        <Route exact path='/search' component={SearchContainer} />
+                        <Route exact path='/user/:nickname'
+                               render={ props => <PersonContainer history={history}/>} />
                         <Route path='*' component={Error}/>
                     </Switch>
                 </div>

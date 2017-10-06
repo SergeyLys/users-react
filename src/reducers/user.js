@@ -5,29 +5,33 @@ const initialState = {
 
 export default (state = initialState, action) => {
     switch (action.type) {
-        case 'USER_LOGGED_IN':
+        case 'USER_LOGGED_IN': {
             return {
                 ...state,
                 user: action.payload
             };
+        }
 
-        case 'USER_LOGOUT':
+        case 'USER_LOGOUT': {
             return {
                 user: ''
             };
+        }
 
-        case 'USER_CHANGED':
+        case 'USER_CHANGED': {
             return {
                 ...state,
                 user: action.payload
             };
+        }
 
-        case 'FETCH_USERS':
+        case 'FETCH_USERS': {
             return {
                 ...state,
                 users: action.payload
             };
-        
+        }
+
         case 'USER_BANNED': {
             return {
                 ...state,

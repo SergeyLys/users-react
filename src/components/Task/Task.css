@@ -1,0 +1,4 @@
+.inline-form {
+  display: flex; }
+  .inline-form .field {
+    margin: 0 !important; }

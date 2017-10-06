@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import {Button} from 'semantic-ui-react';
 import {Link} from 'react-router-dom';
 import { connect } from 'react-redux';
-import {uploadImage, changeProfileRequest} from '../../actions/usersActions';
+import { uploadImage, changeProfileRequest } from '../../actions/usersActions';
+import TaskFormContainer from '../Task/TaskForm/TaskFormContainer';
 import UserImageForm from './UserImageForm';
 import checkToken from '../../common/checkToken';
 import './UserContainer.css';
@@ -21,27 +22,18 @@ class UserContainer extends Component {
   };
 
   onSubmit = (file) => {
-
     const data = new FormData();
-
     data.append('file', file);
-
     this.props.uploadImage(data, checkToken('userstoken'));
   };
 
   resetIcon = () => {
     const {name, age} = this.props.userInfo.user;
     this.props.changeProfileRequest({name, age, photo: {data: Buffer, contentType: String}}, checkToken('userstoken'));
-    
-  };
-
-  editHandler = (e) => {
-
-    console.log(e);
   };
 
   render() {
-    const {login, name, age, photo} = this.props.userInfo.user;
+    const {login, name, age, photo, country, city} = this.props.userInfo.user;
 
     if (typeof photo !== 'undefined') {
       var src = bufferToBase64(photo.data.data);
@@ -68,13 +60,18 @@ class UserContainer extends Component {
 
             <div className="user-info">
               <div className="profile-module">
-                {name && <p onClick={this.editHandler}>Your name: {name}</p>}
-                {age && <p onClick={this.editHandler}>Your age: {age}</p>}
+                {name && <p>Your name: {name}</p>}
+                {age && <p>Your age: {age}</p>}
+                {country && <p>Your country: {country}</p>}
+                {city && <p>Your city: {city}</p>}
                 <Link to='/edit'><Button primary>Edit your profile</Button></Link>
               </div>
 
               <div className="wall-module">
-                <p>No tasks, would you like to <Link to="/task-create">add</Link> task?</p>
+
+                <TaskFormContainer/>
+
+                <p>No posts, would you like to <Link to="/task-create">add</Link> task?</p>
               </div>
             </div>
           </div>

@@ -1,0 +1,6 @@
+.search-form .input-row {
+  position: relative; }
+  .search-form .input-row .search-params {
+    position: absolute;
+    right: 5px;
+    top: 7px; }

@@ -35,3 +35,12 @@ export function uploadImage(data, token) {
             }).catch(err => console.log(err.response));
     }
 }
+
+export function searchRequest(nickname) {
+    return dispatch => {
+        return axios.get(`/api/user/${nickname}`)
+            .then(res => {
+                dispatch({type: 'FETCH_SEARCH', payload: res.data});
+            }).catch(err => console.log(err.response));
+    }
+}
